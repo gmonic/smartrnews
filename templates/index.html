@@ -264,9 +264,10 @@
 <div id="united kingdom" class="container-fluid bg-lightblue">
   <h2>united kingdom</h2>
    <table style="width:100%">
- {% for item in uk_trends_pretty %}
+ {% for i in range(3):
+       trend = uk_trends[0]["trends"][i] %}
             <tr>
-                <th> {{item.text}} </th>
+                <th> {{trend["name"]}} </th>
                 
             </tr>
         {% endfor %}

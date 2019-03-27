@@ -1,5 +1,5 @@
 import tweepy
-from textblob import TextBlob
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from flask import Flask, render_template, request
 
 
@@ -16,21 +16,14 @@ auth.set_access_token(access_token, access_token_secret)
 
 api = tweepy.API(auth)
 
+analyser = SentimentIntensityAnalyzer()
+
 public_tweets=api.search('Theresa May')
 
-for tweet in public_tweets:
-    print(tweet.text)
-    analysis = TextBlob(tweet.text)
-    print(analysis.sentiment)
-    if analysis.sentiment[0]>0:
-        print('Positive')
-    elif analysis.sentiment[0]<0:
-        print('Negative')
-    else:
-        print('Neutral')
+def sentiment_analyzer_scores(sentence):
+    score = analyser.polarity_scores(sentence)
+    print("{:-<40} {}".format(sentence, str(score)))
 
- if not trend["name"].startswith("#"):
-    trend = uk_trends[0]["trends"]       
-        for i in range(0,5):
-            trend_no_hashtag[i] = trend[i]
-        
+for tweet in public_tweets:
+   sentiment_analyzer_scores(tweet)
+

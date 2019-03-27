@@ -2,8 +2,12 @@ from flask import Flask, render_template, request
 import tweepy, json
 import pandas as pd
 import matplotlib.pyplot as plt
+import os
 
 app = Flask("MyApp")
+port = int(os.environ.get("PORT", 5000))
+
+
 with open("credentials.txt", "r") as file:
     consumer_key = file.readline().split()[2]
     consumer_secret = file.readline().split()[2]
@@ -18,8 +22,8 @@ with open("credentials.txt", "r") as file:
 @app.route("/")
 def country_info():
     uk_trends = api.trends_place(id=23424975)
-    uk_trends_pretty = json.dumps(uk_trends)
-    return render_template("index.html", uk_trends_pretty=uk_trends_pretty)
+    
+    return render_template("index.html", uk_trends=uk_trends)
 
 @app.route("/contact")
 def hello_someone():
@@ -36,7 +40,6 @@ def my_first_twitter_app():
     tweets_timeline = api.home_timeline(count = 5)
     world_trends = api.trends_available()
     ldn_trends = api.trends_place(id = 44418)
-    ldn_trends_pretty = json.dumps(ldn_trends, indent=4)
     return render_template("third_page.html", tweets_timeline=tweets_timeline, world_trends=world_trends, ldn_trends=ldn_trends)
 
-app.run(debug=True)
+app.run(host='0.0.0.0', port=port, debug=True)

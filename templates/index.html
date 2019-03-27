@@ -12,7 +12,7 @@
         .jumbotron {
             background-color:#5fb4d3;
             color: #ffffff;
-            padding: 100px 25px;
+            padding: 100px 1px;
         }
 
         .bg-lightblue {
@@ -93,7 +93,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span> 
       </button>
-      <a class="navbar-brand" href="#">Logo</a>
+<img src="static/images/logo_v2_padded.jpg" width="120" height="40">
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-left">
@@ -140,8 +140,8 @@
 
 
 <div id="home" class="jumbotron text-center">
-<img src="static/images/logo2.jpg" width="470" height="280">
-<p>We specialise in data analytics just for your use</p>
+<img src="static/images/logo_v2_1.jpg" width="470" height="130">
+<p></p>
 <form class="form-inline">
     <div class="input-group">
       <input type="email" class="form-control" size="50" placeholder="Enter Email Address" required>
@@ -264,12 +264,15 @@
 <div id="united kingdom" class="container-fluid bg-lightblue">
   <h2>united kingdom</h2>
    <table style="width:100%">
- {% for item in uk_trends_pretty %}
+ {% for i in range(0,5):  %}
+    {% set trend = uk_trends[0]["trends"][i] %}
+    {% if not trend["name"].startswith("#") %}
             <tr>
-                <th> {{item.text}} </th>
+              <th>   {{ trend["name"]}} </th>
                 
-            </tr>
-        {% endfor %}
+            </tr> 
+    {% endif %}
+  {% endfor %}
     </table>
 
 

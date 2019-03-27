@@ -18,7 +18,6 @@ api = tweepy.API(auth)
 @app.route("/")
 def country_info():
     uk_trends = api.trends_place(id=23424975)
-
     return render_template("index.html", uk_trends=uk_trends)
 
 @app.route("/contact")

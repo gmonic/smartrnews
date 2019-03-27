@@ -5,18 +5,15 @@ import os
 
 app = Flask("MyApp")
 port = int(os.environ.get("PORT", 5000))
+consumer_key = os.environ.get("consumer_key")
+consumer_secret = os.environ.get("consumer_secret")
+access_token = os.environ.get("acess_token")
+access_token_secret = os.environ.get("acess_token_secret")
 
+auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+auth.set_access_token(access_token, access_token_secret)
 
-with open("credentials.txt", "r") as file:
-    consumer_key = file.readline().split()[2]
-    consumer_secret = file.readline().split()[2]
-    access_token = file.readline().split()[2]
-    access_token_secret = file.readline().split()[2]
-
-    auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-    auth.set_access_token(access_token, access_token_secret)
-
-    api = tweepy.API(auth)
+api = tweepy.API(auth)
 
 @app.route("/")
 def country_info():

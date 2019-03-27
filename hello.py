@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 import tweepy, json
-import pandas as pd
-import matplotlib.pyplot as plt
+import pandas
+import matplotlib.pyplot
 import os
 
 app = Flask("MyApp")
@@ -22,7 +22,7 @@ with open("credentials.txt", "r") as file:
 @app.route("/")
 def country_info():
     uk_trends = api.trends_place(id=23424975)
-    
+
     return render_template("index.html", uk_trends=uk_trends)
 
 @app.route("/contact")

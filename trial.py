@@ -29,8 +29,8 @@ for tweet in public_tweets:
     else:
         print('Neutral')
 
- if not trend["name"].startswith("#"):
+if not trend["name"].startswith("#"):
     trend = uk_trends[0]["trends"]       
-        for i in range(0,5):
-            trend_no_hashtag[i] = trend[i]
+    for i in range(0,5):
+        trend_no_hashtag[i] = trend[i]
         

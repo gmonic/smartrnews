@@ -157,7 +157,7 @@
  <div class="row">
    <div class="col-sm-4">
 
-    <h2>About Company Page</h2>
+    <h2>About Page</h2>
     <h4>Lorem ipsum..</h4> 
     <p>Lorem ipsum..</p>
   <span class="glyphicon glyphicon-Facebook"></span>
@@ -264,14 +264,18 @@
 <div id="united kingdom" class="container-fluid bg-lightblue">
   <h2>united kingdom</h2>
    <table style="width:100%">
- {% for i in range(0,5):  %}
-    {% set trend = uk_trends[0]["trends"][i] %}
-    {% if not trend["name"].startswith("#") %}
+    {% for i in range(0,5): %}
+    {% set trend = trends_without_hashtags[i] %}
+
             <tr>
-              <th>   {{ trend["name"]}} </th>
+              <th>   {{ df.at[i,"name"] }} </th>
+              <th> {{ trend["tweet_volume"] }} </th>
+              <th> {{ df.at[i,"tweet_volume"] }} </th>
+              <th> Times </th>
+              <th> T.Sentiment</th>
+              
             </tr> 
-    {% endif %}
-  {% endfor %}
+    {% endfor %}
     </table>
 
 

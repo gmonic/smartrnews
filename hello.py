@@ -26,6 +26,7 @@ api = tweepy.API(auth)
 #store bbc headline in dataframe (if no headline returned - this sometimes happens, put 0 in its place)
 @app.route("/")
 def country_info():
+    new_list=[]
     uk_id=23424975
     uk_trends = api.trends_place(id=uk_id) 
     trends_without_hashtags = list(filter(lambda x: not x["name"].startswith("#"), uk_trends[0]["trends"]))
@@ -34,8 +35,20 @@ def country_info():
     for x in range(0,5):
        trend = trends_without_hashtags[x]
        trend_name = trend["name"]
-       all_articles = newsapi.get_everything(q=trend_name, sources='bbc-news', domains='bbc.co.uk', sort_by='relevancy')
-       return render_template("index.html", trends_without_hashtags=trends_without_hashtags, df=df)
+       search_results=api.search(q=trend_name, count=2)
+       search=search_results[0]
+       json_str=json.dumps(search._json)
+       new_list.append(json_str)
+    length = len(new_list)
+    #    search_results=api.search(q=trend_name, count=1)
+    #    search=search_results[0]
+    #    json_str=json.dumps(search._json)
+    #    df_new = pandas.DataFrame(data=search_results)
+
+    return render_template("index.html", trends_without_hashtags=trends_without_hashtags, df=df,  search_results=search_results,search=search, new_list=new_list, length=length)
+
+        # all_articles = newsapi.get_everything(q=trend_name, sources='bbc-news', domains='bbc.co.uk', sort_by='relevancy')
+
 # return str(all_articles["articles"][0]["title"])
 #       trend_name_g = "from:Reuters "+trend_name
 #       search_results = api.search(q=trend_name_g)
@@ -47,7 +60,7 @@ def country_info():
 #contact page
 @app.route("/contact")
 def hello_someone():
-    return render_template("hello.html")
+    return render_template("contact.html")
 
 
 #subscribe page

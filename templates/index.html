@@ -19,6 +19,10 @@
             background-color: #f4f9f9;
         }
 
+         .bg-blue {
+            background-color: #5fb4d3;
+        }
+
         .container-fluid {
             padding: 60px 50px;
         }
@@ -153,24 +157,27 @@
 </div>
 
 
-<div id="about" class="container-fluid">
+<div class="container-fluid">
  <div class="row">
    <div class="col-sm-4">
-
-    <h2>About Page</h2>
-    <h4>Lorem ipsum..</h4> 
-    <p>Lorem ipsum..</p>
-  <span class="glyphicon glyphicon-Facebook"></span>
-
-  <button class="btn btn-default btn-lg">Get in Touch</button>
     <map name="g_twenty">
     <area shape="rect", coords="602,170,718,297" href="#united kingdom">
     </map>
-
     <img src="static/images/g_twenty.jpg" usemap="#g_twenty">
+  </div>
+ </div>
+</div>
 
 
+<div id="about" class="container-fluid">
+ <div class="row">
+   <div class="col-sm-12">
 
+    <h2>About</h2>
+    <p> Click on a country to find the top 5 trends everyone is talking about.</p>
+    <p> You can then see what the newspapers are saying, and even see if it's a positive or negative tweet</p>
+    <p> To contact us or find out more about the creators, please see the Contact section! We look forward to hearing from you!</p>
+  <button class="btn btn-default btn-lg">Get in Touch</button>
 
   </div>
  </div>
@@ -266,13 +273,15 @@
    <table style="width:100%">
     {% for i in range(0,5): %}
     {% set trend = trends_without_hashtags[i] %}
+    {% set recent_tweet = new_list[i] %}
 
             <tr>
               <th>   {{ df.at[i,"name"] }} </th>
               <th> {{ trend["tweet_volume"] }} </th>
               <th> {{ df.at[i,"tweet_volume"] }} </th>
-              <th> Times </th>
-              <th> T.Sentiment</th>
+              <th> {{ search["text"] }} </th>
+              <th> {{ recent_tweet["text"] }} </th>
+              <th> {{ length }} </th>
               
             </tr> 
     {% endfor %}
@@ -286,5 +295,30 @@
 
 </div>
 
+<div id="contact" class="container-fluid">
+  <h2>Contact</h2>
+  <div class="col-sm-4">
+  <p>Monica Gupta </p>
+
+</div>
+
+<div class="col-sm-4">
+<p> Kamryn Harris</p>
+</div>
+</div>
+
+
+<div id="contact" class="container-fluid bg-blue">
+
+<h4 style="text-align:center; color:white">Subscribe here</h4>
+<p style="text-align:center; color:white">Feedback welcome</p>
+<form class="form-inline">
+    <div class="input-group">
+      <input type="email" class="form-control" size="50" placeholder="Enter Email Address" required>
+      <div class="input-group-btn">
+        <button type="button" class="btn btn-success">Subscribe</button>
+        </div>
+    </div>
+</div>
 </body>
 </html>

@@ -28,7 +28,7 @@ api = tweepy.API(auth)
 def country_info():
     new_list=[]
     uk_id=23424975
-    uk_trends = api.trends_place(id=uk_id) 
+    uk_trends = api.trends_place(id=uk_id,tweet_mode="extended") 
     trends_without_hashtags = list(filter(lambda x: not x["name"].startswith("#"), uk_trends[0]["trends"]))
     df = pandas.DataFrame(data=trends_without_hashtags) 
     

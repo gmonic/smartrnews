@@ -42,46 +42,80 @@
             border-radius: 0;
         }
 
-.navbar li a, .navbar .navbar-brand {
-  color: #fff !important;
-}
+        .navbar li a, .navbar .navbar-brand {
+          color: #fff !important;
+        }
 
-.navbar-nav li a:hover, .navbar-nav li.active a {
-  color: #f4511e !important;
-  background-color: #fff !important;
-}
+        .navbar-nav li a:hover, .navbar-nav li.active a {
+          color: #f4511e !important;
+          background-color: #fff !important;
+        }
 
-.navbar-default .navbar-toggle {
-  border-color: transparent;
-  color: #fff !important;
-}
+        .navbar-default .navbar-toggle {
+          border-color: transparent;
+          color: #fff !important;
+        }
 
-.dropdown-menu {
-  background-color: #5fb4d3;
-}
+        .dropdown-menu {
+          background-color: #5fb4d3;
+        }
 
-.fa {
-  padding: 20px;
-  font-size: 30px;
-  width: 50px;
-  text-align: center;
-  text-decoration: none;
-  margin: 5px 2px;
-}
+        .fa {
+          padding: 20px;
+          font-size: 30px;
+          width: 50px;
+          text-align: center;
+          text-decoration: none;
+          margin: 5px 2px;
+        }
 
-.fa:hover {
-    opacity: 0.7;
-}
 
-.fa-facebook {
-  background: #5fb4d3;
-  color: white;
-}
+        .fa:hover {
+            opacity: 0.7;
+        }
 
-.fa-twitter {
-  background: #5fb4d3;
-  color: white;
-}
+        .fa-facebook {
+          background: #5fb4d3;
+          color: white;
+        }
+
+        .fa-twitter {
+          background: #5fb4d3;
+          color: white;
+        }
+
+        .fa-linkedin {
+          background: white;
+          color: #5fb4d3;
+        }
+
+        .center {
+        display: block;
+        margin-left: auto;
+        margin-right:auto;
+        width=50%;
+
+        }
+
+        table {
+          border-collapse: collapse;
+          width: 100%;
+        }
+
+        th, td {
+          text-align: left;
+          padding: 8px;
+        }
+
+        tr:nth-child(even) {background-color: #edf2f2;}
+
+        .positive {
+          color: green;
+        }
+
+        .negative {
+          color: red;
+        }
 
     </style>
 
@@ -89,235 +123,280 @@
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span> 
-      </button>
-<img src="static/images/logo_v2_padded.jpg" width="120" height="40">
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-left">
-        <li><a href="#home">home</a></li>
-        <li><a href="#about">about</a></li>
-        <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">countries
-        <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="#argentina">argentina</a></li>
-          <li><a href="#australia">australia</a></li>
-          <li><a href="#brazil">brazil</a></li>
-          <li><a href="#canada">canada</a></li>
-          <li><a href="#china">china</a></li>
-          <li><a href="#france">france</a></li>
-          <li><a href="#germany">germany</a></li>
-          <li><a href="#india">india</a></li>
-          <li><a href="#indonesia">indonesia</a></li>
-          <li><a href="#italy">italy</a></li>
-          <li><a href="#japan">japan</a></li>
-          <li><a href="#mexico">mexico</a></li>
-          <li><a href="#russia">russia</a></li>
-          <li><a href="#saudi arabia">saudi arabia</a></li>
-          <li><a href="#south africa">south africa</a></li>
-          <li><a href="#south korea">south korea</a></li>
-          <li><a href="#turkey">turkey</a></li>
-          <li><a href="#united kingdom">united kingdom</a></li>
-          <li><a href="#united states">united states</a></li>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span> 
+        </button>
+  <img src="static/images/logo_v2_padded.jpg" width="120" height="40">
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-left">
+          <li><a href="#home">home</a></li>
+          <li><a href="#about">about</a></li>
+          <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">countries
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#argentina">argentina</a></li>
+            <li><a href="#australia">australia</a></li>
+            <li><a href="#brazil">brazil</a></li>
+            <li><a href="#canada">canada</a></li>
+            <li><a href="#china">china</a></li>
+            <li><a href="#france">france</a></li>
+            <li><a href="#germany">germany</a></li>
+            <li><a href="#india">india</a></li>
+            <li><a href="#indonesia">indonesia</a></li>
+            <li><a href="#italy">italy</a></li>
+            <li><a href="#japan">japan</a></li>
+            <li><a href="#mexico">mexico</a></li>
+            <li><a href="#russia">russia</a></li>
+            <li><a href="#saudi arabia">saudi arabia</a></li>
+            <li><a href="#south africa">south africa</a></li>
+            <li><a href="#south korea">south korea</a></li>
+            <li><a href="#turkey">turkey</a></li>
+            <li><a href="#united kingdom">united kingdom</a></li>
+            <li><a href="#united states">united states</a></li>
+          </ul>
+        </li>
+          <li><a href="#contact">contact</a></li>
+          <li><a href="#subscribe">subscribe</a></li>
         </ul>
-      </li>
-        <li><a href="#contact">contact</a></li>
-        <li><a href="#subscribe">subscribe</a></li>
-      </ul>
-    </div>  
-     <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#" class="fa fa-facebook"></a></li>
-        <li><a href="#" class="fa fa-twitter"></a></li>
-        </ul>   
-    </div>    
+      </div>  
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="https://www.facebook.com/Smartr-news-779942922387822/" class="fa fa-facebook"></a></li>
+          <li><a href="https://twitter.com/smartrnews" class="fa fa-twitter"></a></li>
+          <li><a href="mailto:smartrnews@gmail.com" class="fa fa-envelope"></a></li>
+          </ul>   
+      </div>    
 
-  </div>
-</nav>
-
-
-<div id="home" class="jumbotron text-center">
-<img src="static/images/logo_v2_1.jpg" width="470" height="130">
-<p style="text-align:center; color:white; font-size:120%"> Click on a country and see what's happening quickly </p>
-<p></p>
-<form class="form-inline">
-    <div class="input-group">
-      <input type="email" class="form-control" size="50" placeholder="Enter Email Address" required>
-      <div class="input-group-btn">
-        <button type="button" class="btn btn-success">Subscribe</button>
-        </div>
     </div>
+  </nav>
 
-</div>
+
+  <div id="home" class="jumbotron text-center">
+  <img src="static/images/logo_v2_1.jpg" width="470" height="130">
+  <p style="text-align:center; color:white; font-size:120%"> Click on a country and see what's happening quickly </p>
+  <p></p>
+  <form class="form-inline" method="post" onsubmit="myFunction()">
+      <div class="input-group">
+        <input type="email" name="email_address" class="form-control" size="50" placeholder="Enter Email Address" required>
+        <div class="input-group-btn">
+          <input type="submit" value="Subscribe" class="btn btn-success">Subscribe</button>
+          </div>
+      </div>
+          <p style="font-size:140%" id="demo"></p>
+  <script> 
+  function myFunction(){
+
+  document.getElementById("demo").innerHTML = "Subscribed!"
+  }
+
+  </script>
 
 
-<div class="container-fluid">
- <div class="row">
-   <div class="col-sm-4">
-    <map name="g_twenty">
-    <area shape="rect", coords="602,170,718,297" href="#united kingdom">
-    </map>
-    <img src="static/images/g_twenty.jpg" usemap="#g_twenty">
+
+
+  </form>
   </div>
- </div>
-</div>
 
 
-<div id="about" class="container-fluid">
- <div class="row">
-   <div class="col-sm-12">
+  <div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-4">
+      <map name="g_twenty">
+      <area shape="rect", coords="602,170,718,297" href="#united kingdom">
+      </map>
+      <img src="static/images/g_twenty.jpg" usemap="#g_twenty">
+    </div>
+  </div>
+  </div>
 
-    <h2>About</h2>
-    <p> Click on a country to find the top 5 trends everyone is talking about.</p>
-    <p> You can then see what the newspapers are saying, and even see if it's a positive or negative tweet</p>
-    <p> To contact us or find out more about the creators, please see the Contact section! We look forward to hearing from you!</p>
-  <button class="btn btn-default btn-lg">Get in Touch</button>
+
+  <div id="about" class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+
+      <h2>About</h2>
+      <p> Click on a country to find the top 5 trends everyone is talking about.</p>
+      <p> You can then see what the newspapers are saying, and even see if it's a positive or negative tweet</p>
+      <p> To contact us or find out more about the creators, please see the Contact section! We look forward to hearing from you!</p>
+    <button class="btn btn-default btn-lg">Get in Touch</button>
+
+    </div>
+  </div>
+  </div>
+
+  <div id="argentina" class="container-fluid bg-lightblue">
+    <h2>Argentina</h2>
 
   </div>
- </div>
-</div>
 
-<div id="argentina" class="container-fluid bg-lightblue">
-  <h2>Argentina</h2>
+  <div id="australia" class="container-fluid bg-lightblue">
+    <h2>Australia</h2>
 
-</div>
+  </div>
 
-<div id="australia" class="container-fluid bg-lightblue">
-  <h2>Australia</h2>
+  <div id="brazil" class="container-fluid bg-lightblue">
+    <h2>Brazil</h2>
 
-</div>
+  </div>
 
-<div id="brazil" class="container-fluid bg-lightblue">
-  <h2>Brazil</h2>
+  <div id="canada" class="container-fluid bg-lightblue">
+    <h2>Canada</h2>
 
-</div>
+  </div>
 
-<div id="canada" class="container-fluid bg-lightblue">
-  <h2>Canada</h2>
+  <div id="china" class="container-fluid bg-lightblue">
+    <h2>China</h2>
 
-</div>
+  </div>
 
-<div id="china" class="container-fluid bg-lightblue">
-  <h2>China</h2>
+  <div id="france" class="container-fluid bg-lightblue">
+    <h2>France</h2>
 
-</div>
+  </div>
 
-<div id="france" class="container-fluid bg-lightblue">
-  <h2>France</h2>
+  <div id="germany" class="container-fluid bg-lightblue">
+    <h2>Germany</h2>
 
-</div>
+  </div>
 
-<div id="germany" class="container-fluid bg-lightblue">
-  <h2>Germany</h2>
+  <div id="india" class="container-fluid bg-lightblue">
+    <h2>India</h2>
 
-</div>
+  </div>
 
-<div id="india" class="container-fluid bg-lightblue">
-  <h2>India</h2>
+  <div id="indonesia" class="container-fluid bg-lightblue">
+    <h2>indonesia</h2>
 
-</div>
+  </div>
 
-<div id="indonesia" class="container-fluid bg-lightblue">
-  <h2>indonesia</h2>
+  <div id="italy" class="container-fluid bg-lightblue">
+    <h2>italy</h2>
 
-</div>
+  </div>
 
-<div id="italy" class="container-fluid bg-lightblue">
-  <h2>italy</h2>
+  <div id="japan" class="container-fluid bg-lightblue">
+    <h2>japan</h2>
 
-</div>
+  </div>
 
-<div id="japan" class="container-fluid bg-lightblue">
-  <h2>japan</h2>
+  <div id="mexico" class="container-fluid bg-lightblue">
+    <h2>mexico</h2>
 
-</div>
+  </div>
 
-<div id="mexico" class="container-fluid bg-lightblue">
-  <h2>mexico</h2>
+  <div id="russia" class="container-fluid bg-lightblue">
+    <h2>russia</h2>
 
-</div>
+  </div>
 
-<div id="russia" class="container-fluid bg-lightblue">
-  <h2>russia</h2>
+  <div id="saudi arabia" class="container-fluid bg-lightblue">
+    <h2>saudi arabia</h2>
 
-</div>
+  </div>
 
-<div id="saudi arabia" class="container-fluid bg-lightblue">
-  <h2>saudi arabia</h2>
+  <div id="south africa" class="container-fluid bg-lightblue">
+    <h2>south africa</h2>
 
-</div>
+  </div>
 
-<div id="south africa" class="container-fluid bg-lightblue">
-  <h2>south africa</h2>
+  <div id="south korea" class="container-fluid bg-lightblue">
+    <h2>south korea</h2>
 
-</div>
+  </div>
 
-<div id="south korea" class="container-fluid bg-lightblue">
-  <h2>south korea</h2>
+  <div id="turkey" class="container-fluid bg-lightblue">
+    <h2>turkey</h2>
 
-</div>
+  </div>
 
-<div id="turkey" class="container-fluid bg-lightblue">
-  <h2>turkey</h2>
+  <div id="united kingdom" class="container-fluid bg-lightblue">
+       <div class="col-sm-12">
+    <h2>united kingdom</h2>
 
-</div>
+    <table style="width:100%">
 
-<div id="united kingdom" class="container-fluid bg-lightblue">
-  <h2>united kingdom</h2>
-   <table style="width:100%">
-    {% for i in range(0,5): %}
-    {% set trend = trends_without_hashtags[i] %}
-    {% set recent_tweet = new_list[i] %}
-
-            <tr>
-              <th>   {{ df.at[i,"name"] }} </th>
-              <th> {{ trend["tweet_volume"] }} </th>
-              <th> {{ df.at[i,"tweet_volume"] }} </th>
-              <th> {{ recent_tweet["text"] }} </th>
-              
-            </tr> 
-    {% endfor %}
-    </table>
+              <tr>
+                <th>Top Trends</th>
+                <th>Trend Volume</th>
+                <th>Latest Tweet on Trend</th>
+                <th>Sentiment</th>
+              </tr>
+      {% for i in range(0,4): %}
+        {% set trend = uk_trends_without_hashtags[i] %}
+        {% set trend_volume = uk_trend_volume[i] %}
+        {% set recent_tweet = uk_latest_tweet_on_trend_list[i] %}
+        {% set recent_sentiment = uk_sentiment_list[i] %}
 
 
-</div>
+              <tr> 
+                <td> {{ trend["name"] }} </td>
+                <td> {{ trend["tweet_volume"] }} </td>
+                <td> {{ recent_tweet }} </td>  
+                <td {% if recent_sentiment == "Positive" %} class="positive" {% endif %}> {{ recent_sentiment }} </td>                     
+              </tr> 
 
-<div id="united states" class="container-fluid bg-lightblue">
-  <h2>united states</h2>
+      {% endfor %}
+      </table>
+      </div>
 
-</div>
+  </div>
 
-<div id="contact" class="container-fluid">
-  <h2>Contact</h2>
+  <div id="united states" class="container-fluid bg-lightblue">
+    <h2>united states</h2>
+
+  </div>
+
+  <div id="contact" class="container-fluid">
+    <h2>Contact</h2>
+    <div class="col-sm-4">
+    <h3>Monica Gupta </h3> 
+    <p>Hi, thanks for visiting smartr news! I currently work
+    in London and recently graduated from studying Maths
+    at Oxford University. We both love Maths and it's great to learn python at
+    Code First Girls and be able to apply maths logic to
+    something cool and different!</p>
+    <img src="/static/images/monica.jpg" class="center" width="100" height="150" alt="Monica">
+  <p> Want to say hello to Monica? Click below and send a message! </p>
+  <a href="https://www.linkedin.com/in/monica-gupta-9827a496/" class="fa fa-linkedin"></a>
+  </div>
+
   <div class="col-sm-4">
-  <p>Monica Gupta </p>
-
-</div>
-
-<div class="col-sm-4">
-<p> Kamryn Harris</p>
-</div>
-</div>
+  <h4> Kamryn Harris</h4>
+  </div>
+  </div>
 
 
-<div id="contact" class="container-fluid bg-blue">
+  <div id="contact" class="container-fluid bg-blue">
 
-<h4 style="text-align:center; color:white">Subscribe here</h4>
-<p style="text-align:center; color:white">Feedback welcome</p>
-<form class="form-inline">
-    <div class="input-group">
-      <input type="email" class="form-control" size="50" placeholder="Enter Email Address" required>
-      <div class="input-group-btn">
-        <button type="button" class="btn btn-success">Subscribe</button>
+  <h4 style="text-align:center; color:white">Subscribe here</h4>
+  <p style="text-align:center; color:white">Feedback welcome</p>
+
+
+  <form class="form-inline" method="post" onsubmit="myFunction()">
+      <div class="input-group">
+        <input type="email" name="email_address" class="form-control" size="50" placeholder="Enter Email Address" required>
+        <div class="input-group-btn">
+          <input type="submit" value="Subscribe" class="btn btn-success">Subscribe</button>
         </div>
-    </div>
-</div>
+      </div>
+          <p style="font-size:140%" id="demo"></p>
+  <script> 
+    function myFunction(){
+      document.getElementById("demo").innerHTML = "Subscribed!"
+    }
+  </script>
+
+
+  </form>
+
+  </div>
 </body>
 </html>
+

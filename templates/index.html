@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale-1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel = "stylesheet" href = "map.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <style>
@@ -117,6 +118,9 @@
           color: red;
         }
 
+        .neutral {
+          color: orange;
+        }
     </style>
 
 </head>
@@ -141,29 +145,20 @@
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">countries
           <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#argentina">argentina</a></li>
             <li><a href="#australia">australia</a></li>
-            <li><a href="#brazil">brazil</a></li>
             <li><a href="#canada">canada</a></li>
             <li><a href="#china">china</a></li>
             <li><a href="#france">france</a></li>
             <li><a href="#germany">germany</a></li>
-            <li><a href="#india">india</a></li>
-            <li><a href="#indonesia">indonesia</a></li>
             <li><a href="#italy">italy</a></li>
             <li><a href="#japan">japan</a></li>
-            <li><a href="#mexico">mexico</a></li>
             <li><a href="#russia">russia</a></li>
-            <li><a href="#saudi arabia">saudi arabia</a></li>
-            <li><a href="#south africa">south africa</a></li>
-            <li><a href="#south korea">south korea</a></li>
-            <li><a href="#turkey">turkey</a></li>
             <li><a href="#united kingdom">united kingdom</a></li>
             <li><a href="#united states">united states</a></li>
           </ul>
         </li>
+          <li><a href="#enter_location">Enter Location</a></li>
           <li><a href="#contact">contact</a></li>
-          <li><a href="#subscribe">subscribe</a></li>
         </ul>
       </div>  
       <div class="collapse navbar-collapse" id="myNavbar">
@@ -173,7 +168,6 @@
           <li><a href="mailto:smartrnews@gmail.com" class="fa fa-envelope"></a></li>
           </ul>   
       </div>    
-
     </div>
   </nav>
 
@@ -181,27 +175,20 @@
   <div id="home" class="jumbotron text-center">
   <img src="static/images/logo_v2_1.jpg" width="470" height="130">
   <p style="text-align:center; color:white; font-size:120%"> Click on a country and see what's happening quickly </p>
+   <p style="text-align:center; color:white; font-size:100%"> Subscribe below with your email address: </p>
   <p></p>
-  <form class="form-inline" method="post" onsubmit="myFunction()">
-      <div class="input-group">
-        <input type="email" name="email_address" class="form-control" size="50" placeholder="Enter Email Address" required>
-        <div class="input-group-btn">
-          <input type="submit" value="Subscribe" class="btn btn-success">Subscribe</button>
-          </div>
-      </div>
-          <p style="font-size:140%" id="demo"></p>
-  <script> 
-  function myFunction(){
-
-  document.getElementById("demo").innerHTML = "Subscribed!"
-  }
-
-  </script>
 
 
-
-
-  </form>
+    <form action="/" method="POST" class="form-inline">
+        <div class="input-group">
+          {{ form2.csrf_token }}
+          {{ form2.email(size=40) }}
+          <br>
+                  <div class="input-group-btn">
+          <input type="submit" value="Subscribe" class="btn btn-success" style="height:28px; font-size:10px">
+                  </div>
+        </div>
+    </form>
   </div>
 
 
@@ -209,44 +196,132 @@
   <div class="row">
     <div class="col-sm-4">
       <map name="g_twenty">
-      <area shape="rect", coords="602,170,718,297" href="#united kingdom">
+      <area shape="rect", coords="602,170,623,200" href="#united kingdom">
+      <area shape="rect", coords="1096,494,1232,586" href="#australia">      
+      <area shape="rect", coords="186,139,350,198" href="#canada"> 
+      <area shape="rect", coords="932,243,1101,297" href="#china"> 
+      <area shape="rect", coords="650,197,661,205" href="#germany"> 
+      <area shape="rect", coords="620,218,639,226" href="#france">  
+      <area shape="rect", coords="656,231,684,250" href="#italy"> 
+      <area shape="rect", coords="1140,248,1168,280" href="#japan"> 
+      <area shape="rect", coords="745,120,1092,182" href="#russia"> 
+      <area shape="rect", coords="170,220,280,285" href="#united states"> 
       </map>
       <img src="static/images/g_twenty.jpg" usemap="#g_twenty">
     </div>
   </div>
+
   </div>
 
 
-  <div id="about" class="container-fluid">
+  <div id="about" class="container-fluid bg-lightblue">
   <div class="row">
     <div class="col-sm-12">
 
       <h2>About</h2>
-      <p> Click on a country to find the top 5 trends everyone is talking about.</p>
-      <p> You can then see what the newspapers are saying, and even see if it's a positive or negative tweet</p>
+      <p> Click on a country to find the top 4 trends everyone is talking about.</p>
+      <p> You can then see what top trends are, and we make it even easier for quick scanning by letting you know if the tweet has a positive or negative sentiment.  </p>
+      <p> Is the location you want not listed below? Then you can enter your own location in the section just below here! This can be a city or a country. </p>
       <p> To contact us or find out more about the creators, please see the Contact section! We look forward to hearing from you!</p>
-    <button class="btn btn-default btn-lg">Get in Touch</button>
+      <a href="#contact" class="btn btn-success">Get in touch</a>
 
     </div>
   </div>
   </div>
 
-  <div id="argentina" class="container-fluid bg-lightblue">
-    <h2>Argentina</h2>
+  <div id="enter_location" class="container-fluid">
+    <h2>Enter your own location!</h2>
+    <form action="/" method="POST" class="form-inline">
+        <div class="input-group">
+          {{ form1.csrf_token }}
+          {{ form1.location(size=40) }}
+                  <div class="input-group-btn">
+          <input type="submit" value="Click to submit Location" class="btn btn-success" style="height:28px; font-size:10px">
+                  </div>
+        </div>
+    </form>
+<br>
+<br>
+    {% if user_location is defined %}
+    Your entered location is: {{ user_location }} 
+    {% else %}
+    
+    {% endif %}
+<br>
+<br>
+    {% if user_address is defined %}
+    The address we think this is: {{ user_address }} 
+    <br>
+    <br>
+    <p> <em> Not the address you were after? Try adding more detail (e.g. instead of writing "Richmond", write "Richmond, UK") </em> </p>
+    {% else %}
+   
+    {% endif %}
+<br>
+<br>
+
+    <div>
+    <table style="width:100%">
+
+              <tr>
+                {% if user_trends is defined %}
+                <th>Top Trends</th>
+                <th>Top Tweet on Trend</th>
+                <th>Sentiment</th>
+              </tr>
+      {% for i in range(0,4): %}
+        {% set trend = user_trends[i] %}
+        {% set recent_tweet = top_tweets[i] %}
+        {% set recent_sentiment = tweet_sentiment[i] %}
+
+              <tr> 
+                <td> {{ trend }} </td>
+                <td> {{ recent_tweet }} </td>  
+                <td {% if recent_sentiment == "Positive" %} class="positive" {% elif recent_sentiment == "Negative" %} class="negative" {% elif recent_sentiment == "Neutral" %} class="neutral" {% endif %}> {{ recent_sentiment }} </td>   
+              </tr> 
+
+      {% endfor %}
+      {% endif %}
+      </table>
+    </div>
+
 
   </div>
 
-  <div id="australia" class="container-fluid bg-lightblue">
+
+    <div id="contact" class="container-fluid">
+    <h2>Contact</h2>
+    <div class="col-sm-6">
+      <h3>Monica Gupta </h3> 
+      <p>Hi, thanks for visiting smartr news! I currently work
+      in London and recently graduated from studying Maths
+      at Oxford University. We both love Maths and it's great to learn python at
+      Code First Girls and be able to apply maths logic to
+      something cool and different!</p>
+      <img src="/static/images/monica.jpg" class="center" width="100" height="150" alt="Monica">
+      <p> Want to say hello to Monica? Click below and send a message! </p>
+      <a href="https://www.linkedin.com/in/monica-gupta-9827a496/" class="fa fa-linkedin"></a>
+    </div>
+
+    <div class="col-sm-6">
+      <h3> Kamryn Harris</h3>
+      <p> Hi, I'm Kamryn! I am a second year student at Queen Mary University of London where I study Mathematics. 
+      This is my second course with CFG and I am loving learning about Python at Twitter!</p>
+      <br>
+      <img src="/static/images/kamryn.jpg" class="center" width="110" height="150" alt="Kamryn">
+      <p> Want to say hello to Kamryn? Click below and send a message! </p>
+      <a href="https://www.linkedin.com/in/kamryn-harris1/" class="fa fa-linkedin"></a>
+    </div>
+  </div>
+
+
+  <div id="australia" class="container-fluid">
     <h2>Australia</h2>
 
   </div>
 
-  <div id="brazil" class="container-fluid bg-lightblue">
-    <h2>Brazil</h2>
 
-  </div>
-
-  <div id="canada" class="container-fluid bg-lightblue">
+  <div id="canada" class="container-fluid">
     <h2>Canada</h2>
 
   </div>
@@ -256,7 +331,7 @@
 
   </div>
 
-  <div id="france" class="container-fluid bg-lightblue">
+  <div id="france" class="container-fluid">
     <h2>France</h2>
 
   </div>
@@ -266,17 +341,8 @@
 
   </div>
 
-  <div id="india" class="container-fluid bg-lightblue">
-    <h2>India</h2>
 
-  </div>
-
-  <div id="indonesia" class="container-fluid bg-lightblue">
-    <h2>indonesia</h2>
-
-  </div>
-
-  <div id="italy" class="container-fluid bg-lightblue">
+  <div id="italy" class="container-fluid">
     <h2>italy</h2>
 
   </div>
@@ -286,60 +352,35 @@
 
   </div>
 
-  <div id="mexico" class="container-fluid bg-lightblue">
-    <h2>mexico</h2>
-
-  </div>
 
   <div id="russia" class="container-fluid bg-lightblue">
     <h2>russia</h2>
 
   </div>
 
-  <div id="saudi arabia" class="container-fluid bg-lightblue">
-    <h2>saudi arabia</h2>
 
-  </div>
 
-  <div id="south africa" class="container-fluid bg-lightblue">
-    <h2>south africa</h2>
 
-  </div>
-
-  <div id="south korea" class="container-fluid bg-lightblue">
-    <h2>south korea</h2>
-
-  </div>
-
-  <div id="turkey" class="container-fluid bg-lightblue">
-    <h2>turkey</h2>
-
-  </div>
-
-  <div id="united kingdom" class="container-fluid bg-lightblue">
+  <div id="united kingdom" class="container-fluid">
        <div class="col-sm-12">
-    <h2>united kingdom</h2>
+    <h2>United Kingdom</h2>
 
     <table style="width:100%">
 
               <tr>
                 <th>Top Trends</th>
-                <th>Trend Volume</th>
-                <th>Latest Tweet on Trend</th>
+                <th>Top Tweet on Trend</th>
                 <th>Sentiment</th>
               </tr>
       {% for i in range(0,4): %}
         {% set trend = uk_trends_without_hashtags[i] %}
-        {% set trend_volume = uk_trend_volume[i] %}
         {% set recent_tweet = uk_latest_tweet_on_trend_list[i] %}
         {% set recent_sentiment = uk_sentiment_list[i] %}
 
-
               <tr> 
-                <td> {{ trend["name"] }} </td>
-                <td> {{ trend["tweet_volume"] }} </td>
+                <td> {{ trend }} </td>
                 <td> {{ recent_tweet }} </td>  
-                <td {% if recent_sentiment == "Positive" %} class="positive" {% endif %}> {{ recent_sentiment }} </td>                     
+                <td {% if recent_sentiment == "Positive" %} class="positive" {% elif recent_sentiment == "Negative" %} class="negative" {% elif recent_sentiment == "Neutral" %} class="neutral" {% endif %}> {{ recent_sentiment }} </td>   
               </tr> 
 
       {% endfor %}
@@ -349,39 +390,18 @@
   </div>
 
   <div id="united states" class="container-fluid bg-lightblue">
-    <h2>united states</h2>
+    <h2>United States</h2>
 
   </div>
 
-  <div id="contact" class="container-fluid">
-    <h2>Contact</h2>
-    <div class="col-sm-4">
-    <h3>Monica Gupta </h3> 
-    <p>Hi, thanks for visiting smartr news! I currently work
-    in London and recently graduated from studying Maths
-    at Oxford University. We both love Maths and it's great to learn python at
-    Code First Girls and be able to apply maths logic to
-    something cool and different!</p>
-    <img src="/static/images/monica.jpg" class="center" width="100" height="150" alt="Monica">
-  <p> Want to say hello to Monica? Click below and send a message! </p>
-  <a href="https://www.linkedin.com/in/monica-gupta-9827a496/" class="fa fa-linkedin"></a>
-  </div>
 
-  <div class="col-sm-4">
-  <h4> Kamryn Harris</h4>
-  </div>
-  </div>
+  <div class="container-fluid bg-blue">
+    <h4 style="text-align:center; color:white">Subscribe here</h4>
+    <p style="text-align:center; color:white">Feedback welcome</p>
 
-
-  <div id="contact" class="container-fluid bg-blue">
-
-  <h4 style="text-align:center; color:white">Subscribe here</h4>
-  <p style="text-align:center; color:white">Feedback welcome</p>
-
-
-  <form class="form-inline" method="post" onsubmit="myFunction()">
+    <form class="form-inline" method="post" onsubmit="myFunction()">
       <div class="input-group">
-        <input type="email" name="email_address" class="form-control" size="50" placeholder="Enter Email Address" required>
+        <input type="email" name="email_address" class="form-control" size="140" placeholder="Enter Email Address" required>
         <div class="input-group-btn">
           <input type="submit" value="Subscribe" class="btn btn-success">Subscribe</button>
         </div>
@@ -392,11 +412,7 @@
       document.getElementById("demo").innerHTML = "Subscribed!"
     }
   </script>
-
-
   </form>
-
   </div>
 </body>
 </html>
-

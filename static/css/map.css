@@ -1,0 +1,78 @@
+path#CA:hover {
+  fill: #b6f9fe !important
+}
+path#AU:hover {
+  fill: #b6f9fe !important
+}
+path#BR:hover {
+  fill: #b6f9fe !important
+}
+path#AU:hover {
+  fill: #b6f9fe !important
+}
+path#CN:hover {
+  fill: #b6f9fe !important
+}
+path#DE:hover {
+  fill: #b6f9fe !important
+}
+path#GB:hover {
+  fill: #b6f9fe !important
+}
+path#ID:hover {
+  fill: #b6f9fe !important
+}
+path#IT:hover {
+  fill: #b6f9fe !important
+}
+path#JP:hover {
+  fill: #b6f9fe !important
+}
+path#KR:hover {
+  fill: #b6f9fe !important
+}
+path#MX:hover {
+  fill: #b6f9fe !important
+}
+path#RU:hover {
+  fill: #b6f9fe !important
+}
+path#SA:hover {
+  fill: #b6f9fe !important
+}
+path#US:hover {
+  fill: #b6f9fe !important
+}
+path#ZA:hover {
+  fill: #b6f9fe !important
+}
+path#FR:hover {
+  fill: #b6f9fe !important
+}
+
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}

@@ -85,6 +85,7 @@ def homepage():
             trends_list.append(trend_name)
         return trends_list
 
+    # get tweets for a trend list
     def get_tweets(trends):
         latest_tweet_on_trend_list=[]
         if trends is not None:
@@ -154,6 +155,13 @@ def homepage():
     uk_trends_without_hashtags = get_trends(uk_id)
     uk_latest_tweet_on_trend_list = get_tweets(uk_trends_without_hashtags)
     uk_sentiment_list = get_sentiment(uk_latest_tweet_on_trend_list)
+    
+    # US section:
+    us_trends_without_hashtags = get_trends(us_id)
+    us_latest_tweet_on_trend_list = get_tweets(us_trends_without_hashtags)
+    us_sentiment_list = get_sentiment(us_latest_tweet_on_trend_list)
+
+    # if user inputs location in form1, then output location, tweets and sentiment
     if form1.location.data and form1.validate():
         user_location = form1.location.data
         user_longitude = find_longitude_from_input_name(user_location)
@@ -165,28 +173,30 @@ def homepage():
         tweet_sentiment = get_sentiment(top_tweets) 
     #return html file
         return render_template("index.html", form1=form1, form2=form2,
-                            user_location=user_location, user_address=user_address, user_trends=user_trends, top_tweets=top_tweets, tweet_sentiment=tweet_sentiment,
-                            uk_trends_without_hashtags=uk_trends_without_hashtags, uk_latest_tweet_on_trend_list=uk_latest_tweet_on_trend_list, uk_sentiment_list=uk_sentiment_list)
+                            user_location=user_location, user_address=user_address, user_trends=user_trends, top_tweets=top_tweets, tweet_sentiment=tweet_sentiment, 
+                            uk_trends_without_hashtags=uk_trends_without_hashtags, uk_latest_tweet_on_trend_list=uk_latest_tweet_on_trend_list, uk_sentiment_list=uk_sentiment_list,
+                            us_trends_without_hashtags=us_trends_without_hashtags, us_latest_tweet_on_trend_list=us_latest_tweet_on_trend_list, us_sentiment_list=us_sentiment_list)
+    # or if user inputs email address then send them an email using mailgun API
+    elif form2.email.data and form2.validate():
+        email = request.form['email']
+        requests.post(
+            "https://api.mailgun.net/v3/" + DOMAIN_NAME +"/messages",
+            auth=("api", API_KEY),
+            data={"from": "Monica <mailgun@" + DOMAIN_NAME + ">",
+                "to": [email],
+                "subject": "Thanks for subscribing to smartr news!",
+                "text": "We welcome you to smartr news!"})
+        return render_template("index.html", form1=form1, form2=form2,
+                            uk_trends_without_hashtags=uk_trends_without_hashtags, uk_latest_tweet_on_trend_list=uk_latest_tweet_on_trend_list, uk_sentiment_list=uk_sentiment_list, 
+                            us_trends_without_hashtags=us_trends_without_hashtags, us_latest_tweet_on_trend_list=us_latest_tweet_on_trend_list, us_sentiment_list=us_sentiment_list)
+    # else if no forms submitted, just give back the html file
     else:
         return render_template("index.html", form1=form1, form2=form2,
-                            uk_trends_without_hashtags=uk_trends_without_hashtags, uk_latest_tweet_on_trend_list=uk_latest_tweet_on_trend_list, uk_sentiment_list=uk_sentiment_list)
+                            uk_trends_without_hashtags=uk_trends_without_hashtags, uk_latest_tweet_on_trend_list=uk_latest_tweet_on_trend_list, uk_sentiment_list=uk_sentiment_list, 
+                            us_trends_without_hashtags=us_trends_without_hashtags, us_latest_tweet_on_trend_list=us_latest_tweet_on_trend_list, us_sentiment_list=us_sentiment_list)
 
 
 # APPENDIX: BITS OF CODE I TRIED AND DIDN'T WANT TO PUT IN THE APP - BUT MAY WANT TO COME BACK TO LATER
-
-    #argentina_trends_without_hashtags=argentina_trends_without_hashtags, argentina_latest_tweet_on_trend_list=argentina_latest_tweet_on_trend_list, argentina_sentiment_list=argentina_sentiment_list, argentina_trend_volume=argentina_trend_volume
-
-    # if request.method == 'POST':
-    #     email_address = request.form['email_address']
-    #     requests.post(
-    #         "https://api.mailgun.net/v3/" + DOMAIN_NAME +"/messages",
-    #         auth=("api", API_KEY),
-    #         data={"from": "Monica <mailgun@" + DOMAIN_NAME + ">",
-    #             "to": [email_address],
-    #             "subject": "Thanks for subscribing to smartr news!",
-    #             "text": "We welcome you to smartr news!"})
-    #     return render_template("index.html", trends_without_hashtags=trends_without_hashtags, df=df,  search_results=search_results,search=search, new_list=new_list, length=length) 
-    # else:
 
     # get trend volume
     # def get_volume(trends):
@@ -199,15 +209,6 @@ def homepage():
     #             volume = trend["tweet_volume"]
     #             latest_trend_volume_list.append(volume)
     #     return latest_trend_volume_list
-
-    # get latest tweet on each trend for said country
-
-
-    # Argentina section:
-    # argentina_trends_without_hashtags = get_trends(argentina_id)
-    # argentina_trend_volume = get_volume(argentina_trends_without_hashtags)
-    # argentina_latest_tweet_on_trend_list = get_tweets(argentina_trends_without_hashtags)
-    # argentina_sentiment_list = get_sentiment(argentina_latest_tweet_on_trend_list) 
 
 
 # run app and debug

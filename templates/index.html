@@ -22,6 +22,10 @@
 
          .bg-blue {
             background-color: #5fb4d3;
+            display: block;
+          margin-left: auto;
+          margin-right:auto;
+          width=50%;
         }
 
         .container-fluid {
@@ -121,6 +125,8 @@
         .neutral {
           color: orange;
         }
+
+        
     </style>
 
 </head>
@@ -316,28 +322,28 @@
 
 
   <div id="australia" class="container-fluid">
-    <h2>Australia</h2>
+    <h2>australia</h2>
 
   </div>
 
 
   <div id="canada" class="container-fluid">
-    <h2>Canada</h2>
+    <h2>canada</h2>
 
   </div>
 
   <div id="china" class="container-fluid bg-lightblue">
-    <h2>China</h2>
+    <h2>china</h2>
 
   </div>
 
   <div id="france" class="container-fluid">
-    <h2>France</h2>
+    <h2>france</h2>
 
   </div>
 
   <div id="germany" class="container-fluid bg-lightblue">
-    <h2>Germany</h2>
+    <h2>germany</h2>
 
   </div>
 
@@ -363,7 +369,7 @@
 
   <div id="united kingdom" class="container-fluid">
        <div class="col-sm-12">
-    <h2>United Kingdom</h2>
+    <h2>united kingdom</h2>
 
     <table style="width:100%">
 
@@ -390,29 +396,52 @@
   </div>
 
   <div id="united states" class="container-fluid bg-lightblue">
-    <h2>United States</h2>
+    <h2>united states</h2>
+
+    <table style="width:100%">
+              <tr>
+                <th>Top Trends</th>
+                <th>Top Tweet on Trend</th>
+                <th>Sentiment</th>
+              </tr>
+      {% for i in range(0,4): %}
+        {% set trend = us_trends_without_hashtags[i] %}
+        {% set recent_tweet = us_latest_tweet_on_trend_list[i] %}
+        {% set recent_sentiment = us_sentiment_list[i] %}
+
+              <tr> 
+                <td> {{ trend }} </td>
+                <td> {{ recent_tweet }} </td>  
+                <td {% if recent_sentiment == "Positive" %} class="positive" {% elif recent_sentiment == "Negative" %} class="negative" {% elif recent_sentiment == "Neutral" %} class="neutral" {% endif %}> {{ recent_sentiment }} </td>   
+              </tr> 
+
+      {% endfor %}
+      </table>
+      </div>
+
+
+
 
   </div>
 
 
-  <div class="container-fluid bg-blue">
+  <div class="jumbotron text-center">
     <h4 style="text-align:center; color:white">Subscribe here</h4>
     <p style="text-align:center; color:white">Feedback welcome</p>
 
-    <form class="form-inline" method="post" onsubmit="myFunction()">
-      <div class="input-group">
-        <input type="email" name="email_address" class="form-control" size="140" placeholder="Enter Email Address" required>
-        <div class="input-group-btn">
-          <input type="submit" value="Subscribe" class="btn btn-success">Subscribe</button>
+    <form action="/" method="POST" class="form-inline">
+        <div class="input-group">
+          {{ form2.csrf_token }}
+          {{ form2.email(size=40) }}
+          <br>
+                  <div class="input-group-btn">
+          <input type="submit" value="Subscribe" class="btn btn-success" style="height:28px; font-size:10px">
+                  </div>
         </div>
-      </div>
-          <p style="font-size:140%" id="demo"></p>
-  <script> 
-    function myFunction(){
-      document.getElementById("demo").innerHTML = "Subscribed!"
-    }
-  </script>
-  </form>
+    </form>
+
+
+
   </div>
 </body>
 </html>

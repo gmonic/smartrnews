@@ -1,7 +1,6 @@
 # import libraries
 from flask import Flask, render_template, request
 import requests
-from newsapi import NewsApiClient
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 import tweepy, json
 import pandas
@@ -33,7 +32,6 @@ WTF_CSRF_SECRET_KEY="qazwsxedc"
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth)
-newsapi = NewsApiClient(api_key='e5b7520feeb046d2bb39801f4957670e')
 
 # create analyser objecct
 analyzer = SentimentIntensityAnalyzer()

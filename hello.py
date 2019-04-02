@@ -91,12 +91,12 @@ def homepage():
         if trends is not None:
             for trend_name in trends:
                 search_results = api.search(q=trend_name, count=3, lang="en")
-                if search_results is None:
-                    search_results = "hello"
-                else:
+                if search_results:
                     search = search_results[0]
-                tweet_text = search.text
-                print (tweet_text)
+                    tweet_text = search.text
+                else:
+                    search = "trend is too new to generate top tweet! available soon!"
+                    tweet_text = search
                 latest_tweet_on_trend_list.append(tweet_text)
             return latest_tweet_on_trend_list
 

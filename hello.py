@@ -49,6 +49,7 @@ class Form2(FlaskForm):
 # create homepage
 @app.route("/", methods=['GET','POST'])
 def homepage():
+    
     # create forms
     form1 = Form1()
     form2 = Form2()
@@ -149,8 +150,6 @@ def homepage():
             new_list.append(name)
         return new_list
 
-
-
     # UK section:
     uk_trends_without_hashtags = get_trends(uk_id)
     uk_latest_tweet_on_trend_list = get_tweets(uk_trends_without_hashtags)
@@ -180,7 +179,7 @@ def homepage():
     elif form2.email.data and form2.validate():
         email = request.form['email']
         requests.post(
-            "https://api.mailgun.net/v3/" + DOMAIN_NAME +"/messages",
+            "https://api.mailgun.net/v3/" + DOMAIN_NAME + "/messages",
             auth=("api", API_KEY),
             data={"from": "Monica <mailgun@" + DOMAIN_NAME + ">",
                 "to": [email],
@@ -194,6 +193,7 @@ def homepage():
         return render_template("index.html", form1=form1, form2=form2,
                             uk_trends_without_hashtags=uk_trends_without_hashtags, uk_latest_tweet_on_trend_list=uk_latest_tweet_on_trend_list, uk_sentiment_list=uk_sentiment_list, 
                             us_trends_without_hashtags=us_trends_without_hashtags, us_latest_tweet_on_trend_list=us_latest_tweet_on_trend_list, us_sentiment_list=us_sentiment_list)
+
 
 
 # APPENDIX: BITS OF CODE I TRIED AND DIDN'T WANT TO PUT IN THE APP - BUT MAY WANT TO COME BACK TO LATER

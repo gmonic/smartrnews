@@ -49,7 +49,7 @@ class Form2(FlaskForm):
 # create homepage
 @app.route("/", methods=['GET','POST'])
 def homepage():
-    
+
     # create forms
     form1 = Form1()
     form2 = Form2()
@@ -160,6 +160,18 @@ def homepage():
     us_latest_tweet_on_trend_list = get_tweets(us_trends_without_hashtags)
     us_sentiment_list = get_sentiment(us_latest_tweet_on_trend_list)
 
+    # Canada section:
+    canada_trends_without_hashtags = get_trends(canada_id)
+    canada_latest_tweet_on_trend_list = get_tweets(canada_trends_without_hashtags)
+    canada_sentiment_list = get_sentiment(canada_latest_tweet_on_trend_list)
+
+    # Australia section:
+    australia_trends_without_hashtags = get_trends(australia_id)
+    australia_latest_tweet_on_trend_list = get_tweets(australia_trends_without_hashtags)
+    australia_sentiment_list = get_sentiment(australia_latest_tweet_on_trend_list)
+
+
+
     # if user inputs location in form1, then output location, tweets and sentiment
     if form1.location.data and form1.validate():
         user_location = form1.location.data
@@ -174,7 +186,9 @@ def homepage():
         return render_template("index.html", form1=form1, form2=form2,
                             user_location=user_location, user_address=user_address, user_trends=user_trends, top_tweets=top_tweets, tweet_sentiment=tweet_sentiment, 
                             uk_trends_without_hashtags=uk_trends_without_hashtags, uk_latest_tweet_on_trend_list=uk_latest_tweet_on_trend_list, uk_sentiment_list=uk_sentiment_list,
-                            us_trends_without_hashtags=us_trends_without_hashtags, us_latest_tweet_on_trend_list=us_latest_tweet_on_trend_list, us_sentiment_list=us_sentiment_list)
+                            us_trends_without_hashtags=us_trends_without_hashtags, us_latest_tweet_on_trend_list=us_latest_tweet_on_trend_list, us_sentiment_list=us_sentiment_list, 
+                            australia_trends_without_hashtags=australia_trends_without_hashtags, australia_latest_tweet_on_trend_list=australia_latest_tweet_on_trend_list, australia_sentiment_list=australia_sentiment_list, 
+                            canada_trends_without_hashtags=canada_trends_without_hashtags, canada_latest_tweet_on_trend_list=canada_latest_tweet_on_trend_list, canada_sentiment_list=canada_sentiment_list)
     # or if user inputs email address then send them an email using mailgun API
     elif form2.email.data and form2.validate():
         email = request.form['email']
@@ -187,12 +201,16 @@ def homepage():
                 "text": "We welcome you to smartr news!"})
         return render_template("index.html", form1=form1, form2=form2,
                             uk_trends_without_hashtags=uk_trends_without_hashtags, uk_latest_tweet_on_trend_list=uk_latest_tweet_on_trend_list, uk_sentiment_list=uk_sentiment_list, 
-                            us_trends_without_hashtags=us_trends_without_hashtags, us_latest_tweet_on_trend_list=us_latest_tweet_on_trend_list, us_sentiment_list=us_sentiment_list)
+                            us_trends_without_hashtags=us_trends_without_hashtags, us_latest_tweet_on_trend_list=us_latest_tweet_on_trend_list, us_sentiment_list=us_sentiment_list, 
+                            australia_trends_without_hashtags=australia_trends_without_hashtags, australia_latest_tweet_on_trend_list=australia_latest_tweet_on_trend_list, australia_sentiment_list=australia_sentiment_list, 
+                            canada_trends_without_hashtags=canada_trends_without_hashtags, canada_latest_tweet_on_trend_list=canada_latest_tweet_on_trend_list, canada_sentiment_list=canada_sentiment_list)
     # else if no forms submitted, just give back the html file
     else:
         return render_template("index.html", form1=form1, form2=form2,
                             uk_trends_without_hashtags=uk_trends_without_hashtags, uk_latest_tweet_on_trend_list=uk_latest_tweet_on_trend_list, uk_sentiment_list=uk_sentiment_list, 
-                            us_trends_without_hashtags=us_trends_without_hashtags, us_latest_tweet_on_trend_list=us_latest_tweet_on_trend_list, us_sentiment_list=us_sentiment_list)
+                            us_trends_without_hashtags=us_trends_without_hashtags, us_latest_tweet_on_trend_list=us_latest_tweet_on_trend_list, us_sentiment_list=us_sentiment_list, 
+                            australia_trends_without_hashtags=australia_trends_without_hashtags, australia_latest_tweet_on_trend_list=australia_latest_tweet_on_trend_list, australia_sentiment_list=australia_sentiment_list, 
+                            canada_trends_without_hashtags=canada_trends_without_hashtags, canada_latest_tweet_on_trend_list=canada_latest_tweet_on_trend_list, canada_sentiment_list=canada_sentiment_list)
 
 
 

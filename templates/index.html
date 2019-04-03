@@ -124,11 +124,8 @@
 
         .neutral {
           color: orange;
-        }
-
-        
+        }      
     </style>
-
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -153,12 +150,6 @@
           <ul class="dropdown-menu">
             <li><a href="#australia">australia</a></li>
             <li><a href="#canada">canada</a></li>
-            <li><a href="#china">china</a></li>
-            <li><a href="#france">france</a></li>
-            <li><a href="#germany">germany</a></li>
-            <li><a href="#italy">italy</a></li>
-            <li><a href="#japan">japan</a></li>
-            <li><a href="#russia">russia</a></li>
             <li><a href="#united kingdom">united kingdom</a></li>
             <li><a href="#united states">united states</a></li>
           </ul>
@@ -183,8 +174,6 @@
   <p style="text-align:center; color:white; font-size:120%"> Click on a country or enter a location to see what's happening quickly </p>
    <p style="text-align:center; color:white; font-size:100%"> Subscribe below with your email address: </p>
   <p></p>
-
-
     <form action="/" method="POST" class="form-inline">
         <div class="input-group">
           {{ form2.csrf_token }}
@@ -197,40 +186,30 @@
     </form>
   </div>
 
-
   <div class="container-fluid">
   <div class="row">
     <div class="col-sm-4">
-      <map name="g_twenty">
-      <area shape="rect", coords="602,170,623,200" href="#united kingdom">
-      <area shape="rect", coords="1096,494,1232,586" href="#australia">      
-      <area shape="rect", coords="186,139,350,198" href="#canada"> 
-      <area shape="rect", coords="932,243,1101,297" href="#china"> 
-      <area shape="rect", coords="650,197,661,205" href="#germany"> 
-      <area shape="rect", coords="620,218,639,226" href="#france">  
-      <area shape="rect", coords="656,231,684,250" href="#italy"> 
-      <area shape="rect", coords="1140,248,1168,280" href="#japan"> 
-      <area shape="rect", coords="745,120,1092,182" href="#russia"> 
-      <area shape="rect", coords="170,220,280,285" href="#united states"> 
+      <map name="my_map">
+      <area shape="rect", coords="513, 166, 537, 199" href="#united kingdom">
+      <area shape="rect", coords="811, 429, 918, 481" href="#australia">      
+      <area shape="rect", coords="75,121,303,199" href="#canada"> 
+      <area shape="rect", coords="137, 215, 267, 273" href="#united states"> 
       </map>
-      <img src="static/images/g_twenty.jpg" usemap="#g_twenty">
+      <img src="static/images/map_ex_russia_white.png" usemap="#my_map" style="width:1100px;height:600px">
     </div>
   </div>
-
   </div>
 
 
   <div id="about" class="container-fluid bg-lightblue">
   <div class="row">
     <div class="col-sm-12">
-
       <h2>About</h2>
       <p> Click on a country to find the top 4 trends everyone is talking about.</p>
       <p> You can then see what top trends are, and we make it even easier for quick scanning by letting you know if the tweet has a positive or negative sentiment.  </p>
       <p> Is the location you want not listed below? Then you can enter your own location in the section just below here! This can be as specific as a postcode or as generic as a country. </p>
       <p> To contact us or find out more about the creators, please see the Contact section! We look forward to hearing from you!</p>
       <a href="#contact" class="btn btn-success">Get in touch</a>
-
     </div>
   </div>
   </div>
@@ -251,7 +230,6 @@
     {% if user_location is defined %}
     Your entered location is: {{ user_location }} 
     {% else %}
-    
     {% endif %}
 <br>
 <br>
@@ -261,14 +239,12 @@
     <br>
     <p> <em> Not the address you were after? Try adding more detail (e.g. instead of writing "Richmond", write "Richmond, UK") </em> </p>
     {% else %}
-   
     {% endif %}
-<br>
-<br>
 
+<br>
+<br>
     <div>
     <table style="width:100%">
-
               <tr>
                 {% if user_trends is defined %}
                 <th>Top Trends</th>
@@ -279,23 +255,19 @@
         {% set trend = user_trends[i] %}
         {% set recent_tweet = top_tweets[i] %}
         {% set recent_sentiment = tweet_sentiment[i] %}
-
               <tr> 
                 <td> {{ trend }} </td>
                 <td> {{ recent_tweet }} </td>  
                 <td {% if recent_sentiment == "Positive" %} class="positive" {% elif recent_sentiment == "Negative" %} class="negative" {% elif recent_sentiment == "Neutral" %} class="neutral" {% endif %}> {{ recent_sentiment }} </td>   
               </tr> 
-
       {% endfor %}
       {% endif %}
       </table>
     </div>
-
-
   </div>
 
 
-    <div id="contact" class="container-fluid">
+  <div id="contact" class="container-fluid">
     <h2>Contact</h2>
     <div class="col-sm-6">
       <h3>Monica Gupta </h3> 
@@ -320,59 +292,52 @@
     </div>
   </div>
 
-
   <div id="australia" class="container-fluid">
     <h2>australia</h2>
-
+    <table style="width:100%">
+              <tr>
+                <th>Top Trends</th>
+                <th>Top Tweet on Trend</th>
+                <th>Sentiment</th>
+              </tr>
+      {% for i in range(0,4): %}
+        {% set trend = australia_trends_without_hashtags[i] %}
+        {% set recent_tweet = australia_latest_tweet_on_trend_list[i] %}
+        {% set recent_sentiment = australia_sentiment_list[i] %}
+              <tr> 
+                <td> {{ trend }} </td>
+                <td> {{ recent_tweet }} </td>  
+                <td {% if recent_sentiment == "Positive" %} class="positive" {% elif recent_sentiment == "Negative" %} class="negative" {% elif recent_sentiment == "Neutral" %} class="neutral" {% endif %}> {{ recent_sentiment }} </td>   
+              </tr> 
+      {% endfor %}
+      </table>
   </div>
-
 
   <div id="canada" class="container-fluid bg-lightblue">
     <h2>canada</h2>
-
+    <table style="width:100%">
+              <tr>
+                <th>Top Trends</th>
+                <th>Top Tweet on Trend</th>
+                <th>Sentiment</th>
+              </tr>
+      {% for i in range(0,4): %}
+        {% set trend = canada_trends_without_hashtags[i] %}
+        {% set recent_tweet = canada_latest_tweet_on_trend_list[i] %}
+        {% set recent_sentiment = canada_sentiment_list[i] %}
+              <tr> 
+                <td> {{ trend }} </td>
+                <td> {{ recent_tweet }} </td>  
+                <td {% if recent_sentiment == "Positive" %} class="positive" {% elif recent_sentiment == "Negative" %} class="negative" {% elif recent_sentiment == "Neutral" %} class="neutral" {% endif %}> {{ recent_sentiment }} </td>   
+              </tr> 
+      {% endfor %}
+      </table>
   </div>
-
-  <div id="china" class="container-fluid">
-    <h2>china</h2>
-
-  </div>
-
-  <div id="france" class="container-fluid">
-    <h2>france</h2>
-
-  </div>
-
-  <div id="germany" class="container-fluid bg-lightblue">
-    <h2>germany</h2>
-
-  </div>
-
-
-  <div id="italy" class="container-fluid">
-    <h2>italy</h2>
-
-  </div>
-
-  <div id="japan" class="container-fluid bg-lightblue">
-    <h2>japan</h2>
-
-  </div>
-
-
-  <div id="russia" class="container-fluid">
-    <h2>russia</h2>
-
-  </div>
-
-
-
 
   <div id="united kingdom" class="container-fluid">
        <div class="col-sm-12">
     <h2>united kingdom</h2>
-
     <table style="width:100%">
-
               <tr>
                 <th>Top Trends</th>
                 <th>Top Tweet on Trend</th>
@@ -382,17 +347,14 @@
         {% set trend = uk_trends_without_hashtags[i] %}
         {% set recent_tweet = uk_latest_tweet_on_trend_list[i] %}
         {% set recent_sentiment = uk_sentiment_list[i] %}
-
               <tr> 
                 <td> {{ trend }} </td>
                 <td> {{ recent_tweet }} </td>  
                 <td {% if recent_sentiment == "Positive" %} class="positive" {% elif recent_sentiment == "Negative" %} class="negative" {% elif recent_sentiment == "Neutral" %} class="neutral" {% endif %}> {{ recent_sentiment }} </td>   
               </tr> 
-
       {% endfor %}
       </table>
       </div>
-
   </div>
 
   <div id="united states" class="container-fluid bg-lightblue">
@@ -408,27 +370,19 @@
         {% set trend = us_trends_without_hashtags[i] %}
         {% set recent_tweet = us_latest_tweet_on_trend_list[i] %}
         {% set recent_sentiment = us_sentiment_list[i] %}
-
               <tr> 
                 <td> {{ trend }} </td>
                 <td> {{ recent_tweet }} </td>  
                 <td {% if recent_sentiment == "Positive" %} class="positive" {% elif recent_sentiment == "Negative" %} class="negative" {% elif recent_sentiment == "Neutral" %} class="neutral" {% endif %}> {{ recent_sentiment }} </td>   
               </tr> 
-
       {% endfor %}
       </table>
       </div>
-
-
-
-
   </div>
-
 
   <div class="jumbotron text-center">
     <h4 style="text-align:center; color:white">Subscribe here</h4>
     <p style="text-align:center; color:white">Feedback welcome</p>
-
     <form action="/" method="POST" class="form-inline">
         <div class="input-group">
           {{ form2.csrf_token }}
@@ -439,9 +393,7 @@
                   </div>
         </div>
     </form>
-
-
-
   </div>
+
 </body>
 </html>
